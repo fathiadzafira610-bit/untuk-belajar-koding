@@ -1,26 +1,22 @@
 import { motion } from 'framer-motion';
 
 const skills = {
-  frontend: [
-    { name: 'React', level: 95 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'Next.js', level: 88 },
-    { name: 'Tailwind CSS', level: 95 },
-    { name: 'Vue.js', level: 75 },
+  teknologi: [
+    { name: 'Informatika (Dasar Web & Coding)', level: 85 },
+    { name: 'Pemrograman Web', level: 80 },
+    { name: 'Dasar JavaScript', level: 75 },
   ],
-  backend: [
-    { name: 'Node.js', level: 90 },
-    { name: 'Python', level: 85 },
-    { name: 'PostgreSQL', level: 88 },
-    { name: 'MongoDB', level: 82 },
-    { name: 'GraphQL', level: 78 },
+  pelajaran: [
+    { name: 'Matematika', level: 75 },
+    { name: 'Bahasa Inggris', level: 85 },
+    { name: 'Kimia', level: 95 },
+    { name: 'Biologi', level: 95 },
   ],
-  tools: [
-    { name: 'Git', level: 95 },
-    { name: 'Docker', level: 80 },
-    { name: 'AWS', level: 75 },
-    { name: 'Figma', level: 85 },
-    { name: 'CI/CD', level: 82 },
+  hobi: [
+    { name: 'Membaca', level: 90 },
+    { name: 'Berenang', level: 85 },
+    { name: 'Main Gitar', level: 90 },
+    { name: 'Belajar', level: 95 },
   ],
 };
 
@@ -37,13 +33,14 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
         <span className="font-medium">{name}</span>
         <span className="text-sm text-muted-foreground">{level}%</span>
       </div>
+
       <div className="h-2 bg-muted rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
-          className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
+          transition={{ duration: 1, delay: delay + 0.2 }}
+          className="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-400 to-blue-400"
         />
       </div>
     </motion.div>
@@ -52,8 +49,17 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
+    <section
+      id="skills"
+      className="relative py-20 md:py-32 bg-gradient-to-br from-purple-200 via-pink-100 to-blue-200 overflow-hidden"
+    >
+      {/* Glow Background */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-400 blur-3xl opacity-30 rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-400 blur-3xl opacity-30 rounded-full"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Judul */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,76 +67,75 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Keahlian</span>
+          <span className="text-primary font-medium mb-2 block">
+            Pembelajaran Saya
+          </span>
+
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Skills &amp; Teknologi
+            Bidang yang Saya Pelajari
           </h2>
+
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Frontend */}
+          
+          {/* Teknologi */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
+            className="p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl hover:scale-105 transition-all"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">🎨</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Frontend</h3>
+              <span className="text-2xl">💻</span>
+              <h3 className="font-display text-xl font-bold">Teknologi</h3>
             </div>
+
             <div className="space-y-4">
-              {skills.frontend.map((skill, index) => (
+              {skills.teknologi.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>
           </motion.div>
 
-          {/* Backend */}
+          {/* Pelajaran */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
+            transition={{ delay: 0.1 }}
+            className="p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl hover:scale-105 transition-all"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">⚙️</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Backend</h3>
+              <span className="text-2xl">📚</span>
+              <h3 className="font-display text-xl font-bold">Pelajaran</h3>
             </div>
+
             <div className="space-y-4">
-              {skills.backend.map((skill, index) => (
+              {skills.pelajaran.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>
           </motion.div>
 
-          {/* Tools */}
+          {/* Hobi */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
+            transition={{ delay: 0.2 }}
+            className="p-6 bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl hover:scale-105 transition-all"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">🛠️</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Tools &amp; Lainnya</h3>
+              <span className="text-2xl">🎸</span>
+              <h3 className="font-display text-xl font-bold">Hobi</h3>
             </div>
+
             <div className="space-y-4">
-              {skills.tools.map((skill, index) => (
+              {skills.hobi.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
