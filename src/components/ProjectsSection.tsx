@@ -1,5 +1,12 @@
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+
+// ✅ IMPORT SWIPER
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination, Autoplay } from 'swiper/modules';
 
 const certificates = [
   {
@@ -56,48 +63,60 @@ export default function ProjectsSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full" />
         </motion.div>
 
-        {/* 🧾 Certificates Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* 🎡 CAROUSEL */}
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          autoplay={{ delay: 2500 }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="max-w-6xl mx-auto"
+        >
           {certificates.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group cursor-pointer hover:-translate-y-3 transition duration-300"
-              onClick={() => setSelectedImage(item.image)}
-            >
-              <div className="relative overflow-hidden rounded-2xl shadow-xl">
+            <SwiperSlide key={item.title}>
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="group cursor-pointer hover:-translate-y-3 transition duration-300"
+                onClick={() => setSelectedImage(item.image)}
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-xl">
 
-                {/* 🎀 Label */}
-                <div className="absolute top-3 left-3 bg-pink-500 text-white text-xs px-3 py-1 rounded-full z-10">
-                  Sertifikat
+                  {/* 🎀 Label */}
+                  <div className="absolute top-3 left-3 bg-pink-500 text-white text-xs px-3 py-1 rounded-full z-10">
+                    Sertifikat
+                  </div>
+
+                  {/* 🖼️ Image */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-500"
+                  />
+
+                  {/* 🌫️ Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+
+                  {/* 📝 Text */}
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition duration-300">
+                    <h3 className="text-white font-bold text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-200">
+                      {item.description}
+                    </p>
+                  </div>
+
                 </div>
-
-                {/* 🖼️ Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-500"
-                />
-
-                {/* 🌫️ Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
-
-                {/* 📝 Text */}
-                <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                  <h3 className="text-white font-bold text-lg">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-200">
-                    {item.description}
-                  </p>
-                </div>
-
-              </div>
-            </motion.div>
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
 
       </div>
 

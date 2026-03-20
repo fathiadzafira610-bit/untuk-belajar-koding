@@ -7,6 +7,7 @@ import AboutSection from './components/AboutSection';
 import SkillsSection from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import LoadingScreen from './components/LoadingScreen';
+import CustomCursor from './components/CustomCursor';
 function App() {
 const [loading, setLoading] = useState(true);
 
@@ -20,6 +21,7 @@ if (loading) return <LoadingScreen />;
 
   return (
     <>
+    <CustomCursor />
           <Navbar isDark={false} toggleTheme={() => {}} />
 
       <HeroSection />
