@@ -10,6 +10,7 @@ import LoadingScreen from './components/LoadingScreen';
 import CustomCursor from './components/CustomCursor';
 import ContactSection from './components/ContactSection';
 import AccordionSection from './components/AccordionSection';
+import ClosingSection from '@/components/ClosingSection';
 function App() {
 const [loading, setLoading] = useState(true);
 
@@ -32,6 +33,7 @@ if (loading) return <LoadingScreen />;
       <ProjectsSection/>
       <AccordionSection />
       <ContactSection/>
+      <ClosingSection/>
       <Footer />
       
     </>

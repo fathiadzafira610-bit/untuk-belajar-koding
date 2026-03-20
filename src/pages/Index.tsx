@@ -30,16 +30,17 @@ const Index = () => {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <CertificatesSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    
+      <div className="min-h-screen bg-background text-foreground">
+        <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <CertificatesSection />
+        <ContactSection />
+        <Footer />
+      </div>
   );
 };
 

@@ -29,7 +29,7 @@ export default function HeroSection() {
             className="flex justify-center"
           >
             <img
-              src="/public/fathia.jpeg" 
+              src="/fathia.jpeg" 
               alt="Fathia dzafira"
               className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary shadow-glow"
             />
@@ -138,4 +138,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
