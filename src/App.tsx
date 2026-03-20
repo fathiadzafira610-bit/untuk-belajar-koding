@@ -8,6 +8,8 @@ import SkillsSection from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import LoadingScreen from './components/LoadingScreen';
 import CustomCursor from './components/CustomCursor';
+import ContactSection from './components/ContactSection';
+import AccordionSection from './components/AccordionSection';
 function App() {
 const [loading, setLoading] = useState(true);
 
@@ -28,6 +30,8 @@ if (loading) return <LoadingScreen />;
       <AboutSection/>
       <SkillsSection/>
       <ProjectsSection/>
+      <AccordionSection />
+      <ContactSection/>
       <Footer />
       
     </>
